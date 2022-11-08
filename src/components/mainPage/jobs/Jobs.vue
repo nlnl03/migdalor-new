@@ -94,12 +94,13 @@ export default {
 
 <style scoped>
 .phone-type{
-  font-family: var( --font-secondary);
+    font-family: var(--font-title);
+
     font-weight: var(--font-bold);
 
 }
 .herum span{
-  
+  color:white;
   font-size: 22px;
 }
 .herum{
@@ -108,6 +109,8 @@ export default {
 
 }
 .herum-header{
+    color: white;
+
     font-family: var(--font-title);
 
   margin-bottom: 40px;
@@ -166,7 +169,7 @@ export default {
   align-items: center;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  height: 60%;
+  height: 42%;
   margin:0 auto;
   width: 98%;
 }

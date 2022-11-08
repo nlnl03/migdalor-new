@@ -32,22 +32,22 @@ export default {
 
 <style scoped>
 .phone{
-    color: white;
+    color: black;
 }
 .job-item{
     width: 28%;
-    height: 65%;    
+    height: 100%;    
     margin-top: 10px;
 
     /* margin-bottom: 30px; */
     /* height: 40%; */
     border-radius: 20px;
     background: none !important;
-    border: 1px solid white;     
+    /* border: 1px solid white;      */
 }
 .flex-inner-driver{
     /* transform: translateY(-20px); */
-    color: white;
+    color: black;
   display: flex;
     justify-content: space-evenly;
   flex-direction: column;
