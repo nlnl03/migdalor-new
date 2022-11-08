@@ -84,6 +84,15 @@ export default {
 .fc-scrollgrid {
     border-top: none !important;
 }
+.fc .fc-scrollgrid-liquid{
+    border: none !important;
+}
+.fc-theme-standard td, .fc-theme-standard th {
+    border: none !important;
+}
+.fc-day-today{
+    background-color: transparent !important;
+}
 .fc .fc-col-header-cell-cushion {
     text-align:center;
     display: inline-block;
@@ -91,10 +100,9 @@ export default {
     color:black;
     font-size:1vw;
     color: grey;
-    font-size: 25px;
+    font-size: 20px;
     font-family:var(--font-title);
     text-decoration:none; 
-    border:0;
     outline:none;
 }
 </style>

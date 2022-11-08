@@ -61,7 +61,7 @@ export default {
 
           },
           {
-              job:'מפקד תורן תקשורת מטכ"ל',
+              job:'מפקד תורן ת. מטכ"ל',
             name:"יהונתן רול",
             phone:"052-7253655",
                 grad:{background:"linear-gradient(to right,#28313B ,#485461) "}
@@ -75,7 +75,7 @@ export default {
 
           },
            {
-              job:'שו"ב',
+              job:'מפקד תורן שו"ב',
             name:"אריקה ברודסקי",
             phone:"052-7027354",
                     grad:{background:"linear-gradient(to right,#5D4954 ,#FFA69E) "}
@@ -166,7 +166,7 @@ export default {
   align-items: center;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  height: 38%;
+  height: 60%;
   margin:0 auto;
   width: 98%;
 }
@@ -195,7 +195,7 @@ export default {
       border-radius: 20px;
       display: flex;
       justify-content: space-between;
-        background-image: linear-gradient(to bottom, #00aeef,#2d388a00 99% );
+        background-image: linear-gradient(to bottom, #00aeef, #00aeef );
 
     grid-area: jobs;
     /* border: 1px solid black; */
