@@ -5,6 +5,7 @@
   <Time/>
   <Jobs/>
   <NoticeBoard/>
+  <Calendar/>
 </div>
 
 </template>
@@ -12,6 +13,7 @@
 
 <script>
 import NoticeBoard from "@/components/mainPage/noticeBoard/NoticeBoard.vue"
+import Calendar from "@/components/mainPage/calendar/Calendar.vue"
 
 import Time from "@/components/mainPage/time/Time.vue"
 import TopBar from "@/components/mainPage/topBar/TopBar.vue"
@@ -24,7 +26,8 @@ export default {
     TopBar,
     Time,
     Jobs,
-    NoticeBoard
+    NoticeBoard,
+    Calendar
   }
 }
 </script>

@@ -89,7 +89,7 @@ export default {
 
     justify-content: center;
     font-size: 30px;
-    color:var(--font-secondary);
+    color:var(--font-secondary-color);
   
 }
 .Title-container span{
