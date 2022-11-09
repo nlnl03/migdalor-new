@@ -24,19 +24,28 @@ export default {
   font-family: openSans;
   src: url(assets/opensanshebrew-regular.woff2);
 }
+@font-face{
+    font-family:clockFont;
+    src:url("./assets/RobotoMono-VariableFont_wght.ttf")
+}
 @font-face {
   font-family: openSansBold;
   src: url(assets/opensanshebrew-extrabold.woff2);
 }
 
 :root{
-  --bg-color:rgb(255, 255, 255);
+  --overall-bg-color:rgb(255, 255, 255);
+  --bg-color:rgb(19,126,233) ;
+  --bg-secondary-color:#dc291e;
+  --changing-color:#063c5c;
   --font-primary: openSans;
   --font-title:openSansBold;
   --font-secondary:assistant;
-  --font-primary-color:black;
+  --font-dark-color:black;
+  --font-light-color:white;
   --font-light:400;
   --font-bold:700;
+  --font-clock:clockFont;
   --font-secondary-color:grey
 
 }

@@ -27,7 +27,7 @@ export default {
         border-bottom: 1px solid grey; */
 
     border-radius: 5px;
-    border-right: 12px solid #00aeef;
+    border-right: 12px solid var(--bg-color);
 }
 .notice-item::after{
     /* content: 'חשוב'; */

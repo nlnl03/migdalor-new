@@ -20,6 +20,18 @@ export default {
     name:"Calendar",
     data(){
         return{
+            activities:[],
+            events:{value:[
+         
+         {"Title":"הדממה" ,"end":"2022-11-13T22:00:00Z","start":"2022-11-09T22:00:00Z","subject":"תרגילים", "isGant":true}
+         ,
+         {"Title":"ערב מחלקה" ,"end":"2022-11-15T22:00:00Z","start":"2022-11-11T22:00:00Z","subject":"תרגילים", "isGant":true}
+         ,
+        {"Title":"טיול פלוגתי" ,"end":"2022-11-19T22:00:00Z","start":"2022-11-17T22:00:00Z","subject":"תרגילים", "isGant":true}
+
+
+
+        ]},
                  currentWeekOptions: {
                 
                  timeZone: "Asia/Jerusalem",
@@ -30,7 +42,7 @@ export default {
                 views:{
                     dayGridWeek:{
                         type:'basic',
-                        duration:{days:10},
+                        duration:{days:14},
                         rows:1
                     }
                 },
@@ -42,12 +54,66 @@ export default {
             },
         }
     },
+    mounted(){
+        this.doAll();
+    },
     methods:{
+         doAll(){           
+                this.activities=this.events.value
+                    console.log(this.activities)
+                this.activities = this.activities.filter(activity=>activity.isGant);
+                console.log(this.activities)
+                this.processResponse(this.activities)
+                this.fillEvents()
+    
+        },
             dayHeaderFormatUsingMoment(info) {
            let date =  moment(info.date.marker,'L', 'he').format("dddd  D/M"); 
          
            return date
             },
+             processResponse(response){
+                response.forEach(activity=>{
+
+                
+                    activity.start = moment.tz(activity.start,"Asia/Jerusalem").toDate()
+                    activity.start.setDate(activity.start.getDate() + 1);
+                
+                    activity.end = moment.tz(activity.end,"Asia/Jerusalem").toDate()
+                        activity.end.setDate(activity.end.getDate() + 1);
+
+
+            
+                    
+                })
+             },     fillEvents(){
+            var arr =[]
+
+            this.activities.forEach((event)=>{
+                // var array= this.pickColor(event['subject'])
+                var color ='rgb(19,126,233)'
+                var textColor = 'white'
+                
+                var object = {
+                    'title':event['Title'],
+                    'start':event['start'],
+                    'end':event['end'],
+                    'backgroundColor':color,
+                       'borderColor':'transparent',
+                       'textColor' :textColor
+                }
+                arr.push(object)
+            })
+              this.currentWeekOptions["events"] = arr;
+            this.currentWeekOptions.events.forEach(event=>{
+                if( event.start.getDay() == event.end.getDay()){
+                    event['allDay']= true; 
+                 }
+            })
+        
+            
+        },
+              
     },
     components:{
         FullCalendar
@@ -62,12 +128,19 @@ export default {
 .fc-event-time{
     display:none;
 }
+.fc-event {
+    font-size: 15px !important;
+  margin-bottom: 30px;
+}
 .fc-event-title-container{
-    text-align:center;
-    font-size:0.728vw;
+    text-align:right;
+    padding-right:5px;
     padding-top:0;
     /* padding-bottom:0; */
 }
+.fc-daygrid-event{
+    border-radius:20px !important;
+} 
 
 .fc-daygrid-day-top{
     height:3vh !important;

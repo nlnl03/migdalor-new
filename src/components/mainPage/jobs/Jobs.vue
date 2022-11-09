@@ -141,13 +141,16 @@ export default {
 .flex-shigra-and-other-phones{
   padding-top: 20px;
   /* display: flex; */
+  border-radius: 0px 20px 20px 0px;
   position: relative;
+  background-color:var(--bg-color);
   height: 100%;
   align-items: center;
   width:40%;
 }
 .subgrid-container img{
   left: 3%;
+  z-index:1;
   transform: translateY(-70%);
     position: absolute;
     height:100px;
@@ -198,7 +201,7 @@ export default {
       border-radius: 20px;
       display: flex;
       justify-content: space-between;
-        background-image: linear-gradient(to bottom, #00aeef, #00aeef );
+        /* background-color:var(--bg-color); */
 
     grid-area: jobs;
     /* border: 1px solid black; */
@@ -211,18 +214,13 @@ export default {
 
 
 
-
-
-      /* background-image: linear-gradient(to right, #48C3EB , #718EDD); */
-  /* box-shadow: #17b1e08e 0px 7px 20px 0px; */
-
-
 .jobs{
   /* border: 1px solid black; */
   position: relative;
   /* padding-right: 30px; */
-
-      border-radius: 20px;
+  color:var(--font-light-color);
+  background-color:var(--bg-secondary-color);
+      border-radius: 20px 0px 0px 20px;
         /* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
     width: 70%; 
     height:100%;

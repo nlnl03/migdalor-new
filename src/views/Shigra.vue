@@ -40,7 +40,7 @@ export default {
   grid-template-columns: 0.1fr 2.8fr 1.3fr 1.6fr 0.1fr; 
   grid-template-rows: 0.5fr 0.7fr 0.4fr 2.1fr; 
   gap: 30px 20px; 
-  background-color: var(--bg-color);
+  background-color: var(--overall-bg-color);
   grid-template-areas: 
     ". header header header ."
     ". jobs jobs Time ."

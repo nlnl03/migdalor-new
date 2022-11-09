@@ -31,9 +31,7 @@ export default {
 </script>
 
 <style scoped>
-.phone{
-    color: black;
-}
+
 .job-item{
     width: 28%;
     height: 100%;    
@@ -47,7 +45,6 @@ export default {
 }
 .flex-inner-driver{
     /* transform: translateY(-20px); */
-    color: black;
   display: flex;
     justify-content: space-evenly;
   flex-direction: column;
