@@ -15,8 +15,9 @@ export default {
 .notice-item{
     position: relative;
     text-align: right;
-        margin-bottom: 10px;
+    margin-bottom: 10px;
     padding-right: 10px;
+    background-color: white;
     /* height: 50px; */
     padding-top: 10px;
     padding-bottom: 10px;

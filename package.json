@@ -16,6 +16,7 @@
     "bootstrap": "^5.2.2",
     "bootstrap-icons": "^1.9.1",
     "core-js": "^3.6.5",
+    "hebcal": "^2.3.2",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.38",
     "tsparticles": "^2.5.3",

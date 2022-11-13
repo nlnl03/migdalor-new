@@ -34,7 +34,7 @@ export default {
 }
 
 :root{
-  --overall-bg-color:rgb(255, 255, 255);
+  --overall-bg-color:rgba(226, 225, 225, 0.61);
   --bg-color:rgb(19,126,233) ;
   --bg-secondary-color:#dc291e;
   --changing-color:#063c5c;

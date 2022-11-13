@@ -1,9 +1,13 @@
 <template>
   
   <div class="calendar">
+        <h3 class="noticeBoard-title"> לוח דו שבועי </h3>
+            <div class="flex-subjects"> 
+                <span  v-for="subject in subjects" :key="subject.color"  class="subject" :style="{'--subject-color':subject.color}" >{{subject.subject}} </span> 
+            </div>
         <FullCalendar   :options="currentWeekOptions" />
 
-    
+
      </div>
 </template>
 
@@ -20,16 +24,29 @@ export default {
     name:"Calendar",
     data(){
         return{
+            subjects:[{
+                subject:"פלוגתי",color:"#063c5c"
+            },{
+                    subject:"מחלקתי",color:"#dc291e"
+
+            },{
+                    subject:"גדודי",color:"rgb(19,126,233)"
+
+        }
+            ],
             activities:[],
             events:{value:[
          
-         {"Title":"הדממה" ,"end":"2022-11-13T22:00:00Z","start":"2022-11-09T22:00:00Z","subject":"תרגילים", "isGant":true}
+         {"Title":"הדממה" ,"end":"2022-11-15T22:28:04Z","start":"2022-11-14T21:28:04Z","subject":"מחלקתי", "isGant":true}
          ,
-         {"Title":"ערב מחלקה" ,"end":"2022-11-15T22:00:00Z","start":"2022-11-11T22:00:00Z","subject":"תרגילים", "isGant":true}
+         {"Title":"ערב מחלקה" ,"end":"2022-11-16T22:28:04Z","start":"2022-11-14T22:28:04Z","subject":"גדודי", "isGant":true}
          ,
-        {"Title":"טיול פלוגתי" ,"end":"2022-11-19T22:00:00Z","start":"2022-11-17T22:00:00Z","subject":"תרגילים", "isGant":true}
-
-
+        {"Title":"טיול פלוגתי" ,"end":"2022-11-17T22:28:04Z","start":"2022-11-14T22:28:04Z","subject":"גדודי", "isGant":true},
+        
+         {"Title":"הרצאה בוחרים בחיים" ,"end":"2022-11-18T22:28:04Z","start":"2022-11-14T22:28:04Z","subject":"פלוגתי", "isGant":true}
+         ,
+         {"Title":"ערב ראשון" ,"end":"2022-11-21T22:28:04Z","start":"2022-11-14T22:28:04Z","subject":"מחלקתי", "isGant":true}
+         
 
         ]},
                  currentWeekOptions: {
@@ -47,10 +64,10 @@ export default {
                     }
                 },
                 direction:'rtl',
-                height:'80%',
+                height:'50%',
                 events: [],
-                hiddenDays: [ 5, 6 ],
-                headerToolbar: false,
+                // hiddenDays: [ 5, 6 ],
+                // headerToolbar: false,
             },
         }
     },
@@ -77,10 +94,10 @@ export default {
 
                 
                     activity.start = moment.tz(activity.start,"Asia/Jerusalem").toDate()
-                    activity.start.setDate(activity.start.getDate() + 1);
+                    activity.start.setDate(activity.start.getDate() );
                 
                     activity.end = moment.tz(activity.end,"Asia/Jerusalem").toDate()
-                        activity.end.setDate(activity.end.getDate() + 1);
+                        activity.end.setDate(activity.end.getDate() );
 
 
             
@@ -90,8 +107,7 @@ export default {
             var arr =[]
 
             this.activities.forEach((event)=>{
-                // var array= this.pickColor(event['subject'])
-                var color ='rgb(19,126,233)'
+                var color= this.pickColor(event['subject'])
                 var textColor = 'white'
                 
                 var object = {
@@ -105,14 +121,25 @@ export default {
                 arr.push(object)
             })
               this.currentWeekOptions["events"] = arr;
-            this.currentWeekOptions.events.forEach(event=>{
-                if( event.start.getDay() == event.end.getDay()){
-                    event['allDay']= true; 
-                 }
-            })
+            // this.currentWeekOptions.events.forEach(event=>{
+            //     if( event.start.getDay() == event.end.getDay()){
+            //         event['allDay']= true; 
+            //      }
+            // })
         
             
         },
+        pickColor(subject){
+            if(subject=='גדודי'){
+                return  'rgb(19,126,233)'
+            }
+            if(subject=='מחלקתי'){
+                return '#dc291e'
+            }
+            if( subject =='פלוגתי'){
+                return '#063c5c'
+            }
+        }
               
     },
     components:{
@@ -122,6 +149,38 @@ export default {
 </script>
 
 <style >
+.subject::after{
+    position: absolute;
+    content: "";
+    top: 0%;
+    transform: translate(-130%,22%);
+    left: 0%;
+    display: block;
+    border-radius: 5px;
+    background-color: var(--subject-color);
+    height: 20px;
+    width:20px;
+
+}
+
+.subject{
+    font-size: 20px;
+    margin-left: 30px;
+    margin-right: 30px;
+    position: relative;
+    /* width: 5%; */
+}
+.flex-subjects{
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+    align-items: center;
+    justify-content: center;
+}
+.noticeBoard-title{
+  font-family: var(--font-title);
+  font-size: 40px;
+}
 .calendar{
     grid-area: calendar;
 }
@@ -130,7 +189,7 @@ export default {
 }
 .fc-event {
     font-size: 15px !important;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
 }
 .fc-event-title-container{
     text-align:right;

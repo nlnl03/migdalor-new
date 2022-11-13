@@ -17,7 +17,6 @@ export default {
           "כרגע בלי רסר חובתינו להתנהג בהתאם",
           "נכנסים לתקופה של שחרורים והחלפות (גם בחטיבה) להיערכות כולם",
           "הערכה רבה לכל המשתתפים בכנסי החשיפה",
-        
           "מזל טוב למיטל על הלידה",
           "ביקור במסדרת יחידה מצטיינת של הרמטכל",
           "22.9 אריזות מזון"
@@ -36,7 +35,7 @@ export default {
   display:flex;
   /* flex-wrap: wrap; */
   justify-content: flex-start;
-  width: 90%;
+  width: 100%;
   height: auto;
   flex-direction: column;
   
