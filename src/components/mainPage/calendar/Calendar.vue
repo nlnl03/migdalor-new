@@ -39,13 +39,13 @@ export default {
          
          {"Title":"הדממה" ,"end":"2022-11-15T22:28:04Z","start":"2022-11-14T21:28:04Z","subject":"מחלקתי", "isGant":true}
          ,
-         {"Title":"ערב מחלקה" ,"end":"2022-11-16T22:28:04Z","start":"2022-11-14T22:28:04Z","subject":"גדודי", "isGant":true}
+         {"Title":"ערב מחלקה" ,"end":"2022-11-16T22:28:04Z","start":"2022-11-13T22:28:04Z","subject":"גדודי", "isGant":true}
          ,
-        {"Title":"טיול פלוגתי" ,"end":"2022-11-17T22:28:04Z","start":"2022-11-14T22:28:04Z","subject":"גדודי", "isGant":true},
+        {"Title":"טיול פלוגתי" ,"end":"2022-11-17T22:28:04Z","start":"2022-11-13T22:28:04Z","subject":"גדודי", "isGant":true},
         
-         {"Title":"הרצאה בוחרים בחיים" ,"end":"2022-11-18T22:28:04Z","start":"2022-11-14T22:28:04Z","subject":"פלוגתי", "isGant":true}
+         {"Title":"הרצאה בוחרים בחיים" ,"end":"2022-11-18T22:28:04Z","start":"2022-11-13T22:28:04Z","subject":"פלוגתי", "isGant":true}
          ,
-         {"Title":"ערב ראשון" ,"end":"2022-11-21T22:28:04Z","start":"2022-11-14T22:28:04Z","subject":"מחלקתי", "isGant":true}
+         {"Title":"ערב ראשון" ,"end":"2022-11-14T22:28:04Z","start":"2022-11-13T22:28:04Z","subject":"מחלקתי", "isGant":true}
          
 
         ]},
@@ -66,8 +66,8 @@ export default {
                 direction:'rtl',
                 height:'50%',
                 events: [],
-                // hiddenDays: [ 5, 6 ],
-                // headerToolbar: false,
+                hiddenDays: [ 5, 6 ],
+                headerToolbar: false,
             },
         }
     },

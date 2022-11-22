@@ -25,10 +25,13 @@
 // import {Engine} from "tsparticles-engine"
 import {loadStarsPreset} from "tsparticles-preset-stars"
 import Hebcal from "hebcal"
+import moment from 'moment'
 export default {
     name:"Time",
      data(){
       return{
+        isDay:false,
+
         loaziDate:"",
         hebrewDate:"",
         day:"dayInWeek",
@@ -36,6 +39,7 @@ export default {
                time:"",
             seconds:"",
             clearInt:"",
+            clearSunMoonInt:"",
         options:{
             background: {
               color:"#070B34"
@@ -99,18 +103,38 @@ export default {
           this.showDate()
              this.updateSeconds()
               this.updateTime()
+        },
+        checkIfDay(){
+
+            var currentHour = moment().format("HH");
+
+            if (currentHour >= 6 && currentHour < 20){
+                this.isDay = true
+          } else{
+                  this.isDay = false
+
+            }
+            
+
+
         }
     },
     
     mounted(){
       this.calCLoaziDate()
       this.getHebrewDate()
-        this.doAll()
+      this.doAll()
+      this.checkIfDay()
+
         this.clearInt =setInterval(()=>{
             this.doAll()
         }
         , 1000);
+        this.clearSunMoonInt = setInterval(()=>{
+          this.checkIfDay()
+        },3600000)
         },
+
         unmounted(){
             clearInterval(this.clearInt)
         }
@@ -129,7 +153,7 @@ export default {
 <style >
 .times-container{
   padding-top: 10px;
-  font-size: 30px !important;
+  font-size: 40px !important;
     display: flex;
     flex-direction: column;
   }
@@ -160,8 +184,8 @@ export default {
     /* margin-left:0.5vw; */
      color: rgba(255, 255, 255,1);
 
-    font-family: var(--font-clock);
-    font-size:50px;
+    /* font-family: var(--font-clock); */
+    font-size:40px;
 }
 .big-clock::after { 
     content: attr(seconds);
@@ -169,8 +193,8 @@ export default {
     top:35%;
     box-sizing: border-box;
    
-    font-family: var(--font-clock);
-    font-size:1vw;
+    /* font-family: var(--font-clock); */
+    font-size:40px;
 }
 .particles-container{
   height: 100%;
