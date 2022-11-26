@@ -3,20 +3,21 @@
     <i class="bi bi-moon-fill"></i>
 
     </div> -->
-    <div class="night-and-day">
+    <div class="night-and-day" :class="{night:!isDay,days:isDay}">
              <div class="clock"> 
-                        <i class="bi bi-moon-fill night-icon"></i>
+                        <!-- <i class="bi bi-moon-fill night-icon"></i> -->
 
           <div class="times-container"> 
-                <span class="day"> יום  {{day}}</span>
-                    <span class="day">   {{loaziDate}}</span>
-
-                <span class="day">   {{hebrewDate}}</span>
-                    <span ref="span" :seconds = "seconds" class="day big-clock">{{time}}</span>
+                  <span class="day  ">   {{loaziDate}}</span>
+                  <span class="mid"> </span>
+                <span class="day ">   {{hebrewDate}}</span>
 
 
-    </div>
-        <!-- <Particles id="tsparticles" :options="options" :particlesInit="particlesInit" /> -->
+           </div>
+                           <span class=" week-day">   {{day}}</span>
+
+               <span ref="span" :seconds = "seconds" class="day big-clock">{{time}}</span>
+
     </div>
     </div>
 </template>
@@ -53,6 +54,7 @@ export default {
         }
       }
     },
+    
     methods:{
       calCLoaziDate(){
           var date = new Date();
@@ -119,12 +121,15 @@ export default {
 
         }
     },
-    
+    beforeMount(){
+      this.checkIfDay()
+
+    },
     mounted(){
       this.calCLoaziDate()
       this.getHebrewDate()
       this.doAll()
-      this.checkIfDay()
+      
 
         this.clearInt =setInterval(()=>{
             this.doAll()
@@ -151,25 +156,44 @@ export default {
 </script>
 
 <style >
+.times-container .day{
+  width: 28%;
+}
+.week-day{
+  font-size: 25px;
+  color: rgba(255, 255, 255, 1);
+}
+.mid{
+  /* border-right: 1px solid white; */
+  border-left: 1px solid white;
+  /* padding: 0px 10px ; */
+  /* /* margin-left: 10px; */
+  margin-right: 10px; 
+}
 .times-container{
-  padding-top: 10px;
-  font-size: 40px !important;
+  position: relative;
+  /* padding-top: 10px; */
+  font-size: 20px !important;
     display: flex;
-    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+  
+    justify-content: center;
+    flex-direction: row;
   }
 .day{
   color: rgba(255, 255, 255, 1);
 }
 .clock{
-  text-align: right;
-    position:absolute;
-    /* top:15%; */
-    right:5%;
-    width:100%;
-    height:5.5%;
-     height:auto;
-    
+  position: relative;
+  top: 15px;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+    width: 100%;
+      height: 100%;
 }
+
 
 
 
@@ -185,7 +209,7 @@ export default {
      color: rgba(255, 255, 255,1);
 
     /* font-family: var(--font-clock); */
-    font-size:40px;
+    font-size:25px;
 }
 .big-clock::after { 
     content: attr(seconds);
@@ -194,7 +218,7 @@ export default {
     box-sizing: border-box;
    
     /* font-family: var(--font-clock); */
-    font-size:40px;
+    /* font-size:35px; */
 }
 .particles-container{
   height: 100%;
@@ -214,12 +238,20 @@ export default {
     left: 10%;
     font-size: 100px;
 }
-.night-and-day{
+.night{
+    background-image:url(../../../assets/nightSky.jpg);
 
+}
+.days{
+      background-image:url(../../../assets/daySky.jpg);
+
+}
+.night-and-day{
     position: relative;
     border-radius: 30px;
-    background-image:url(../../../assets/nightSky.jpg);
     background-size: 100% 100%;
+    /* background-origin: border-box; */
+    background-position: 0% 0% !important;
     background-repeat:  no-repeat;
       
      grid-area: Time; 
