@@ -1,6 +1,7 @@
 <template>
   <div class="header">
     <div class="Title-container">
+      
       <div class="swiper">
         <span>מגדלור צמרת/  </span>
                 <div class="stop-and-swap">
