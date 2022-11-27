@@ -35,7 +35,9 @@ export default {
 
 :root{
   --overall-bg-color:rgba(226, 225, 225, 0.61);
-  --bg-color:rgb(19,126,233) ;
+  --bg-color:rgb(19,126,233);
+    /* --bg-color:rgb(49, 63, 58); */
+
   --bg-secondary-color:#dc291e;
   --changing-color:#063c5c;
   --font-primary: openSans;
