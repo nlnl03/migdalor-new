@@ -3,8 +3,9 @@
       <div class="flex-birthdays"> 
         
         <div v-for="pluga in plugot" :key="pluga.name" class="flex-item-pluga" :style="{'--shape-color':pluga.color,'--pluga-name':pluga.name}"> 
-          <h3 class="pluga-title"> {{pluga.name}}</h3>
-            </div>
+          <h3 class="pluga-title" > {{pluga.name}}</h3>
+      
+          </div>
         </div>
         </div>
 </template>

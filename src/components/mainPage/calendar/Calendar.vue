@@ -180,6 +180,7 @@ export default {
 .noticeBoard-title{
   font-family: var(--font-title);
   font-size: 40px;
+  
 }
 .calendar{
     grid-area: calendar;

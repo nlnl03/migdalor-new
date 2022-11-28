@@ -4,7 +4,7 @@
   <Time/>
   <Jobs v-if="false" :jobs="jobs" />
   <BirthdayList v-if="true" :birthdayList="birthdayList" />
-  <NoticeBoard v-if="isShigra" :notices="notices" />
+  <NoticeBoard v-if="true" :notices="notices" />
   <Calendar/>
 </div>
 
@@ -30,12 +30,16 @@ export default {
         mahlaka:"",
       }],
        notices:[
-          "כרגע בלי רסר חובתינו להתנהג בהתאם",
-          "נכנסים לתקופה של שחרורים והחלפות (גם בחטיבה) להיערכות כולם",
-          "הערכה רבה לכל המשתתפים בכנסי החשיפה",
-          "מזל טוב למיטל על הלידה",
-          "ביקור במסדרת יחידה מצטיינת של הרמטכל",
-          "22.9 אריזות מזון"
+          {notice:"כרגע בלי רסר חובתינו להתנהג בהתאם",isCritical:false},
+          {notice: "נכנסים לתקופה של שחרורים והחלפות (גם בחטיבה) להיערכות כולם",isCritical:false},
+          {notice:"הערכה רבה לכל המשתתפים בכנסי החשיפה",isCritical:false},
+          {notice:"מזל  טובטובטו טוב    בטובטוב למיטל על הלידה",isCritical:false},
+          {notice:"ביקור במסדרת יחידה מצטיינת של הרמטכל",isCritical:true},
+          {notice:"22.9 אריזות מזון",isCritical:false},
+          
+         
+          
+          
         ],
        jobs:[
           {job:"נהג תורן",
@@ -103,8 +107,8 @@ export default {
   display: grid; 
   position: relative;
   grid-template-columns: 0.01fr 2.8fr 1.3fr 1.6fr 0.1fr; 
-  grid-template-rows: 0.4fr 0.8fr 0.4fr 2.1fr; 
-  gap: 10px 10px; 
+  grid-template-rows: 0.1fr 0.8fr 0.4fr 2.1fr; 
+  gap: 20px 10px; 
   background-color: var(--overall-bg-color);
   grid-template-areas: 
     ". header header header ."
