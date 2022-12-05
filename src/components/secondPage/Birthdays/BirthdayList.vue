@@ -4,37 +4,42 @@
         
         <div v-for="pluga in plugot" :key="pluga.name" class="flex-item-pluga" :style="{'--shape-color':pluga.color,'--pluga-name':pluga.name}"> 
           <h3 class="pluga-title"> {{pluga.name}}</h3>
+          <div class="birthdays-pluga-flex">
+                <Birthday v-for="birthday in pluga.birthdays" :date="birthday.date" :name="birthday.name" :mahlaka="birthday.mahlaka" :plugaColor="pluga.color" :key ="birthday.name"  />
+            </div>
             </div>
         </div>
         </div>
 </template>
 
 <script>
+import Birthday from './Birthday.vue'
 export default {
+  components: { Birthday },
     data(){
       return{
         plugot:[
           {
             name:'ת. מטכ"ל', color:"rgb(19,126,233)",
-                birthdays:[{mahlaka:"",name:"",date:""}]
+                birthdays:[{mahlaka:"",name:"",date:"5.12"}]
         },{
             name:'מפקדה',color:"#063c5c",
-                  birthdays:[{mahlaka:"",name:"",date:""}]
+                  birthdays:[{mahlaka:"",name:"",date:"5.12"}]
 
         },
         {
           name:'טכנ"ל',color:"#dc291e",
-             birthdays:[{mahlaka:"",name:"",date:""}]
+             birthdays:[{mahlaka:"",name:"",date:"5.12"}]
 
         },{
           name:'שו"ב',color:"#624e6a",            
-          birthdays:[{mahlaka:"",name:"",date:""}]
+          birthdays:[{mahlaka:"",name:"",date:"5.12"}]
 
         },
         {
           
           name:'הפת"ק',color:"teal",
-                      birthdays:[{mahlaka:"",name:"",date:""}]
+                      birthdays:[{mahlaka:"חוזי",name:" דוד דבח",date:"6.12"},{mahlaka:"חוזי",name:"  דוד דבח",date:"5.12"},{mahlaka:"",name:"",date:"7.12"}]
 
         }
         ]
@@ -48,6 +53,16 @@ export default {
 
 
 <style scoped>
+.birthdays-pluga-flex{
+  position: absolute;
+  top:100px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 92%;
+  justify-content: flex-end;
+
+}
 .pluga-title{
   font-family: var(--font-primary);
   padding-right: 10px;
@@ -70,7 +85,7 @@ export default {
 }
 .flex-item-pluga::after{
   border-radius: 50%;
-  content: "f";
+  content: "";
   color: black;
   display: block;
   z-index: 0;
@@ -79,7 +94,7 @@ export default {
   overflow: hidden;
   transform: translate(30%,-80%);
   background-color: var(--shape-color);
-    height: 200px;
+    height: 150px;
     width: 200px;
 }
 

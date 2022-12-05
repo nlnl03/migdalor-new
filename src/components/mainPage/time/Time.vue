@@ -8,14 +8,14 @@
                         <!-- <i class="bi bi-moon-fill night-icon"></i> -->
 
           <div class="times-container"> 
-                  <span class="day  ">   {{loaziDate}}</span>
-                  <span class="mid"> </span>
-                <span class="day ">   {{hebrewDate}}</span>
+
 
 
            </div>
                            <span class=" week-day">   {{day}}</span>
-
+                  <span class="day loaz ">   {{loaziDate}}</span>
+                  <span class="mid"> </span>
+                <span class="day ">   {{hebrewDate}}</span>
                <span ref="span" :seconds = "seconds" class="day big-clock">{{time}}</span>
 
     </div>
@@ -156,11 +156,17 @@ export default {
 </script>
 
 <style >
+.loaz{
+    /* width: 30%; */
+
+  /* text-align: right !important; */
+}
 .times-container .day{
-  width: 28%;
+  /* width: 60%; */
+  /* text-align: left; */
 }
 .week-day{
-  font-size: 25px;
+  font-size: 17px;
   color: rgba(255, 255, 255, 1);
 }
 .mid{
@@ -173,11 +179,13 @@ export default {
 .times-container{
   position: relative;
   /* padding-top: 10px; */
-  font-size: 20px !important;
+  font-size:17px !important;
     display: flex;
     width: 100%;
+    
     margin: 0 auto;
-  
+    align-items: flex-start;
+
     justify-content: center;
     flex-direction: row;
   }
@@ -186,12 +194,17 @@ export default {
 }
 .clock{
   position: relative;
-  top: 15px;
+  top:20px;
       justify-content: center;
       display: flex;
+      align-items: flex-start;
       flex-direction: column;
     width: 100%;
       height: 100%;
+}
+.clock span{
+  width: 60%;
+  text-align: center;
 }
 
 
@@ -209,7 +222,7 @@ export default {
      color: rgba(255, 255, 255,1);
 
     /* font-family: var(--font-clock); */
-    font-size:25px;
+    font-size:20px;
 }
 .big-clock::after { 
     content: attr(seconds);
@@ -243,7 +256,7 @@ export default {
 
 }
 .days{
-      background-image:url(../../../assets/daySky.jpg);
+      background-image:url(../../../assets/daySky.png);
 
 }
 .night-and-day{
@@ -253,7 +266,7 @@ export default {
     /* background-origin: border-box; */
     background-position: 0% 0% !important;
     background-repeat:  no-repeat;
-      
+    width: 60%;
      grid-area: Time; 
 }
 
