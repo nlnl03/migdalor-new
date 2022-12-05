@@ -1,7 +1,7 @@
 <template>
 <div class="wrap">
   <TopBar/>
-  <Time/>
+  <Time :shigra="shigra" />
   <Jobs v-if="false" :jobs="jobs" />
   <BirthdayList v-if="true" :birthdayList="birthdayList" />
   <NoticeBoard v-if="isShigra" :notices="notices" />
@@ -22,6 +22,7 @@ export default {
   name: 'Shigra',
   data(){
     return{
+      shigra:"שגרה",
       clearInt:"",
       isShigra:true,
       birthdayList:[{
