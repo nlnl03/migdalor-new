@@ -1,7 +1,7 @@
 <template>
 <div class="wrap">
   <TopBar/>
-  <Time/>
+  <Time :shigra="shigra" />
   <Jobs v-if="false" :jobs="jobs" />
   <BirthdayList v-if="true" :birthdayList="birthdayList" />
   <NoticeBoard v-if="true" :notices="notices" />
@@ -22,6 +22,7 @@ export default {
   name: 'Shigra',
   data(){
     return{
+      shigra:"שגרה",
       clearInt:"",
       isShigra:true,
       birthdayList:[{
@@ -106,9 +107,15 @@ export default {
 .wrap {
   display: grid; 
   position: relative;
+<<<<<<< HEAD
   grid-template-columns: 0.01fr 2.8fr 1.3fr 1.6fr 0.1fr; 
   grid-template-rows: 0.1fr 0.8fr 0.4fr 2.1fr; 
   gap: 20px 10px; 
+=======
+  grid-template-columns: 0.01fr 2.8fr 1.3fr 1.3fr 0.1fr; 
+  grid-template-rows: 0.3fr 0.8fr 0.4fr 2.1fr; 
+  gap: 10px 10px; 
+>>>>>>> 040400c3a61f5019e92b8f02b6f2abd07eaa5400
   background-color: var(--overall-bg-color);
   grid-template-areas: 
     ". header header header ."

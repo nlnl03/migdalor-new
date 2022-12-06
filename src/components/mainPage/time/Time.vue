@@ -3,22 +3,39 @@
     <i class="bi bi-moon-fill"></i>
 
     </div> -->
+    <div class="night-and-day-and-shigra"> 
+       <div class="semel-and-shigra-container"> 
+      <div class="shigra-container">
+       <span class="shigra-title">  כוננות </span>
+                <!-- <h3 class="shigra-title"> כוננות</h3> -->
+                <!-- <span class="shigra-circle"> כוננות</span> -->
+        </div>
+         <div class="logo-container">
+          <span>
+            {{shigra}}
+            </span>
+              <i class="bi bi-arrow-clockwise"> </i>
+
+        </div>
+      </div>
     <div class="night-and-day" :class="{night:!isDay,days:isDay}">
              <div class="clock"> 
                         <!-- <i class="bi bi-moon-fill night-icon"></i> -->
 
           <div class="times-container"> 
-                  <span class="day  ">   {{loaziDate}}</span>
-                  <span class="mid"> </span>
-                <span class="day ">   {{hebrewDate}}</span>
+
 
 
            </div>
                            <span class=" week-day">   {{day}}</span>
-
+                  <span class="day loaz ">   {{loaziDate}}</span>
+                  <span class="mid"> </span>
+                <span class="day ">   {{hebrewDate}}</span>
                <span ref="span" :seconds = "seconds" class="day big-clock">{{time}}</span>
 
     </div>
+    </div>
+   
     </div>
 </template>
 
@@ -29,6 +46,7 @@ import Hebcal from "hebcal"
 import moment from 'moment'
 export default {
     name:"Time",
+    props:["shigra"],
      data(){
       return{
         isDay:false,
@@ -156,11 +174,62 @@ export default {
 </script>
 
 <style >
+.logo-container{
+  width: 80%;
+  height: 50%;
+  position: relative;
+  
+}
+.logo-container span{
+   z-index:1;
+  position: absolute;
+  top: 60%;
+  font-family: var(--font-title);
+  font-size: 24px;
+  /* color: green; */
+  left: 50%;
+  transform: translate(-50%,-50%);
+
+}
+.logo-container i{
+  
+  position: absolute;
+  top: 60%;
+  font-size: 120px;
+  /* color: green; */
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.shigra-title{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-family: var(--font-title);
+  font-size: 40px;
+}
+.shigra-circle{
+  position: absolute;
+  top: 70%;
+  left:50%;
+  border-radius: 50%;
+  font-size: 30px;
+  color: white;
+  background-color: green;
+  padding: 0.8em 0.8em;
+  transform: translate(-50%,-50%);
+}
+.loaz{
+    /* width: 30%; */
+
+  /* text-align: right !important; */
+}
 .times-container .day{
-  width: 28%;
+  /* width: 60%; */
+  /* text-align: left; */
 }
 .week-day{
-  font-size: 25px;
+  font-size: 17px;
   color: rgba(255, 255, 255, 1);
 }
 .mid{
@@ -173,11 +242,13 @@ export default {
 .times-container{
   position: relative;
   /* padding-top: 10px; */
-  font-size: 20px !important;
+  font-size:17px !important;
     display: flex;
     width: 100%;
+    
     margin: 0 auto;
-  
+    align-items: flex-start;
+
     justify-content: center;
     flex-direction: row;
   }
@@ -186,12 +257,17 @@ export default {
 }
 .clock{
   position: relative;
-  top: 15px;
+  top:20px;
       justify-content: center;
       display: flex;
+      align-items: flex-start;
       flex-direction: column;
     width: 100%;
       height: 100%;
+}
+.clock span{
+  width: 60%;
+  text-align: center;
 }
 
 
@@ -209,7 +285,7 @@ export default {
      color: rgba(255, 255, 255,1);
 
     /* font-family: var(--font-clock); */
-    font-size:25px;
+    font-size:20px;
 }
 .big-clock::after { 
     content: attr(seconds);
@@ -243,20 +319,36 @@ export default {
 
 }
 .days{
-      background-image:url(../../../assets/daySky.jpg);
+      background-image:url(../../../assets/daySky.png);
 
 }
 .night-and-day{
-    position: relative;
+    /* position: relative; */
     border-radius: 30px;
     background-size: 100% 100%;
     /* background-origin: border-box; */
     background-position: 0% 0% !important;
     background-repeat:  no-repeat;
-      
-     grid-area: Time; 
+    width: 50%;
+    height: 100%;
 }
-
-
+.semel-and-shigra-container{
+  height: 100%;
+  width: 50%;
+  border-radius: 30px;
+  /* background-color: white; */
+}
+.shigra-container{
+  position: relative;
+    width:80%;
+    height: 50%;
+    border-bottom: 1px solid grey;
+}
+.night-and-day-and-shigra{
+       grid-area: Time; 
+       justify-content: space-between;
+      display: flex;
+      flex-direction: row;
+}
 
 </style>
