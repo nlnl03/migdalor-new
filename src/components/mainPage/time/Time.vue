@@ -1,8 +1,5 @@
 <template>
-  <!-- <div id="tsparticles" class="night-and-day"> 
-    <i class="bi bi-moon-fill"></i>
 
-    </div> -->
     <div class="night-and-day-and-shigra"> 
        <div class="semel-and-shigra-container"> 
       <div class="shigra-container">
@@ -19,6 +16,9 @@
         </div>
       </div>
     <div class="night-and-day" :class="{night:!isDay,days:isDay}">
+      <div v-if="isDay" class="sun"></div>
+      <div v-if="!isDay" class="moon"></div>
+
              <div class="clock"> 
                         <!-- <i class="bi bi-moon-fill night-icon"></i> -->
 
@@ -174,6 +174,52 @@ export default {
 </script>
 
 <style >
+.sun {
+	width:80px;
+	height: 80px;
+  position:absolute;
+  top:8%;
+  right:15%;
+	background-color: #FFDE00;
+	border-radius: 50%;
+}
+.moon{ 
+	width:80px;
+	height: 80px;
+  position:absolute;
+  top:8%;
+  right:15%;
+	background-color: white;
+	border-radius: 50%;
+
+}
+
+@keyframes sunrise {
+	0% {
+		box-shadow: none;
+	}
+}
+
+@keyframes rays {
+	0% {
+		box-shadow: 
+		0 0 0 0 #FFDE0080,
+		0 0 0 20px #FFDE0080,
+		0 0 0 40px #FFDE0040,
+		0 0 0 60px #FFDE0020,
+		0 0 0 80px #FFDE0010,
+		0 0 40px 100px #FFDE0010;
+	}
+	100% {
+		box-shadow: 
+		0 0 0 20px #FFDE0080,
+		0 0 0 40px #FFDE0040,
+		0 0 0 60px #FFDE0020,
+		0 0 0 80px #FFDE0010,
+		0 0 0 100px #FFDE0000,
+		0 0 40px 100px #FFDE0010;
+	}
+}
 .logo-container{
   width: 80%;
   height: 50%;
@@ -319,11 +365,11 @@ export default {
 
 }
 .days{
-      background-image:url(../../../assets/daySky.png);
+      background-image:url(../../../assets/daySky.jpg);
 
 }
 .night-and-day{
-    /* position: relative; */
+    position: relative;
     border-radius: 30px;
     background-size: 100% 100%;
     /* background-origin: border-box; */

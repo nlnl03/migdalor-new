@@ -3,17 +3,11 @@
       <div class="flex-birthdays"> 
         
         <div v-for="pluga in plugot" :key="pluga.name" class="flex-item-pluga" :style="{'--shape-color':pluga.color,'--pluga-name':pluga.name}"> 
-<<<<<<< HEAD
-          <h3 class="pluga-title" > {{pluga.name}}</h3>
-      
-          </div>
-=======
           <h3 class="pluga-title"> {{pluga.name}}</h3>
           <div class="birthdays-pluga-flex">
                 <Birthday v-for="birthday in pluga.birthdays" :date="birthday.date" :name="birthday.name" :mahlaka="birthday.mahlaka" :plugaColor="pluga.color" :key ="birthday.name"  />
             </div>
             </div>
->>>>>>> 040400c3a61f5019e92b8f02b6f2abd07eaa5400
         </div>
         </div>
 </template>
