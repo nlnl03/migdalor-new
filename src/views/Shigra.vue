@@ -28,7 +28,7 @@ export default {
     return{
       shigraUrl:"",
       notShigraUrl:"",
-      Calendar:"",
+      CalendarUrl:"",
       shigra:"שגרה",
       clearInt:"",
       isShigra:true,
@@ -95,11 +95,17 @@ export default {
   },
   methods:{
      async makeApiCalls(isShigra){
-       
-
+        const calendarResponse = await axios.get(this.CalendarUrl)
+        this.jobs = [...calendarResponse.value]
+          
           if(isShigra){
               const data = await axios.get(this.notShigraUrl)    
-              // const results = data.value;
+              const results = [...data.value];
+
+
+          }else{
+              const data = await axios.get(this.ShigraUrl)    
+              const results = [...data.value];
 
           }
     },
