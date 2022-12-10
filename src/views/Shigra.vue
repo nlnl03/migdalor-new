@@ -5,7 +5,7 @@
   <Jobs v-if="false" :jobs="jobs" />
   <BirthdayList v-if="true" :birthdayList="birthdayList" />
   <NoticeBoard v-if="false" :notices="notices" />
-    <Havai v-if="true" :notices="notices" />
+    <Havai v-if="true" />
 
   <Calendar/>
 </div>
@@ -21,10 +21,14 @@ import Time from "@/components/mainPage/time/Time.vue"
 import TopBar from "@/components/mainPage/topBar/TopBar.vue"
 import Jobs from "@/components/mainPage/jobs/Jobs.vue"
 import Havai from "@/components/secondPage/havai/Havai.vue"
+import axios from "axios"
 export default {
   name: 'Shigra',
   data(){
     return{
+      shigraUrl:"",
+      notShigraUrl:"",
+      Calendar:"",
       shigra:"שגרה",
       clearInt:"",
       isShigra:true,
@@ -88,6 +92,17 @@ export default {
           }
         ]
     }
+  },
+  methods:{
+     async makeApiCalls(isShigra){
+       
+
+          if(isShigra){
+              const data = await axios.get(this.notShigraUrl)    
+              // const results = data.value;
+
+          }
+    },
   },
     beforeMount(){
       this.clearInt = setInterval(()=>{

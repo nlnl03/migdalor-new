@@ -16,6 +16,17 @@ export default {
 
 <style>
 
+.q-carousel__slide{
+  height: 500px;
+  position: relative;
+  min-height: 100%;
+  width: 100%;
+  background-position: 50%;
+  /* background-position:center; */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 @font-face {
   font-family: assistant;
   src: url(assets/Assistant-VariableFont_wght.ttf);
