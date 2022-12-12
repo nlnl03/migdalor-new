@@ -33,6 +33,7 @@ export default {
     font-family: var(--font-primary);
     font-weight: 800;
         font-size: 15px;
+        line-height: 1.2em;
 
 
 }
@@ -54,7 +55,7 @@ export default {
     height: 90px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     border-radius:8px;
     margin-bottom: 10px;
     margin-left: 10px;

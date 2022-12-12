@@ -2,8 +2,8 @@
 <div class="wrap">
   <TopBar/>
   <Time :shigra="shigra" />
-  <Jobs v-if="false" :jobs="jobs" />
-  <BirthdayList v-if="true" :birthdayList="birthdayList" />
+  <Jobs v-if="true" :jobs="jobs" />
+  <BirthdayList v-if="false" :birthdayList="birthdayList" />
   <NoticeBoard v-if="false" :notices="notices" />
     <Havai v-if="true" />
 
@@ -133,8 +133,8 @@ export default {
   display: grid; 
   position: relative;
   grid-template-columns: 0.01fr 2.8fr 1.3fr 1.3fr 0.1fr; 
-  grid-template-rows: 0.3fr 0.8fr 0.4fr 2.1fr; 
-  gap: 10px 10px; 
+  grid-template-rows: 0.3fr 0.8fr 0.5fr 2.1fr; 
+  gap: 30px 10px; 
   background-color: var(--overall-bg-color);
   grid-template-areas: 
     ". header header header ."

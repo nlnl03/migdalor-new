@@ -160,6 +160,9 @@ export default {
     /* direction: rtl !important;   */
       border-radius: 20px;
       display: flex;
+      width: 90%;
+      position: relative;
+      left:100px;
       justify-content: space-between;
         /* background-color:var(--bg-color); */
 

@@ -15,10 +15,14 @@ export default {
 </script>
 
 <style>
-
+.q-carousel{
+  width: 100%;
+}
 .q-carousel__slide{
-  height: 500px;
+  height: 400px;
   position: relative;
+      border-radius: 20px;
+
   min-height: 100%;
   width: 100%;
   background-position: 50%;

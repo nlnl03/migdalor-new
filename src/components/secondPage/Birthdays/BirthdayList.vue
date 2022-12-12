@@ -39,7 +39,7 @@ export default {
         {
           
           name:'הפת"ק',color:"teal",
-                      birthdays:[{mahlaka:"חוזי",name:" דוד דבח",date:"6.12"},{mahlaka:"חוזי",name:"  דוד דבח",date:"5.12"},{mahlaka:"",name:"",date:"7.12"}]
+                      birthdays:[{mahlaka:"חוזי",name:"  ממשפחת דבח דוד דבח",date:"6.12"},{mahlaka:"חוזי",name:"  דוד דבח",date:"5.12"},{mahlaka:"",name:"",date:"7.12"}]
 
         }
         ]

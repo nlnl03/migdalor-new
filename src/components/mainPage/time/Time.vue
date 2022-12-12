@@ -184,8 +184,8 @@ export default {
 	border-radius: 50%;
 }
 .moon{ 
-	width:80px;
-	height: 80px;
+	width:60px;
+	height: 60px;
   position:absolute;
   top:8%;
   right:15%;
@@ -303,10 +303,11 @@ export default {
 }
 .clock{
   position: relative;
-  top:20px;
+  top:15px;
       justify-content: center;
       display: flex;
-      align-items: flex-start;
+      align-items: center;
+      /* align-items: flex-start; */
       flex-direction: column;
     width: 100%;
       height: 100%;
