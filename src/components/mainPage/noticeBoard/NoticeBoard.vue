@@ -3,7 +3,10 @@
     <h3 class="noticeBoard-title"> לוח מודעות</h3>
     <p>הודעות מיקוד מסומנות <span style="color:red">באדום </span> </p>
     <div class="flex-notices"> 
-      <Notice v-for="notice in notices" :key="notice"  :isCritical="notice.isCritical" :notice="notice.notice"/>
+      <Notice v-for="notice in notices"
+       :key="notice"  
+       :isCritical="notice.isCritical"
+        :notice="notice.Title"/>
       </div>
     </div>
 </template>
