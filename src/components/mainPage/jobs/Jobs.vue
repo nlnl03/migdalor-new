@@ -6,7 +6,7 @@
       <div class="jobs">
 
         <div class="flex-jobs"> 
-            <Job v-for="job in jobs" :name="job.name"  :job="job.job" :phone="job.phone" :grad="job.grad" :key="job.job" />
+            <Job v-for="job in jobs" :name="job.name"  :job="job.job" :phone="job.phone"  :key="job.job" />
           </div>
 
       </div>

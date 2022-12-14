@@ -25,10 +25,8 @@ export default {
 
   min-height: 100%;
   width: 100%;
-  background-position: 50%;
-  /* background-position:center; */
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% 100%;
 }
 
 @font-face {

@@ -4,11 +4,16 @@
           <span class="job-title"> 
            {{job}}
           </span>
+          <div v-if="job"> 
           <span class="name">
           {{name}}
             </span>
             <span class="phone">
            {{phone}}
+            </span>
+            </div>
+             <span class="does-not-exist">
+              טרם הוזן
             </span>
         </div>
     </div>
@@ -24,14 +29,17 @@ export default {
           
         }
     },
-    props:["name","job","phone","grad"],
+    props:["name","job","phone"],
     name:"job"
 
 }
 </script>
 
 <style scoped>
-
+.does-not-exist{
+  font-size: 20px;
+    font-family: var(--font-title);
+}
 .job-item{
     width: 28%;
     height: 100%;    

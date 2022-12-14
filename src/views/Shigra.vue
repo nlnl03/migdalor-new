@@ -100,30 +100,18 @@ export default {
           
              
                      let today  = new Date()
-                    today.setDate(today.getDate()-today.getDay())
-                    let lastSunday = new Date(today)
-                    lastSunday.setDate(lastSunday.getDate() + 1)
-                    let lastMonday = new Date(lastSunday)
-                    lastMonday.setDate(lastMonday.getDate() + 1)
-                    let lastTuesday = new Date(lastMonday)
-                    lastTuesday.setDate(lastTuesday.getDate() + 1)
-                    let lastWednesday= new Date(lastTuesday)
-                    lastWednesday.setDate(lastWednesday.getDate() + 1)
-                    let lastThursday= new Date(lastWednesday)
-                    lastThursday.setDate(lastThursday.getDate() + 1)
-                    let lastFriday= new Date(lastThursday)
-                    lastFriday.setDate(lastFriday.getDate() + 1)
-                    let lastSaturday= new Date(lastFriday)
+                     
+                     let tommarow = new Date()
+                     tommarow.setDate(tommarow.getDate() + 1)
+                     console.log(tommarow)
+                    let twoDays  = new Date();
+                    twoDays.setDate(today.getDate() + 2)
+                 
                     
                     today = moment.tz(today,"Asia/Jerusalem").toDate()
-                    lastSunday = moment.tz(lastSunday,"Asia/Jerusalem").toDate()
-                    lastMonday = moment.tz(lastMonday,"Asia/Jerusalem").toDate()
-                    lastTuesday = moment.tz(lastTuesday,"Asia/Jerusalem").toDate()
-                    lastWednesday = moment.tz(lastWednesday,"Asia/Jerusalem").toDate()
-                    lastThursday = moment.tz(lastThursday,"Asia/Jerusalem").toDate()
-                    lastFriday = moment.tz(lastFriday,"Asia/Jerusalem").toDate()
-                    lastSaturday = moment.tz(lastSaturday,"Asia/Jerusalem").toDate()
-                    
+                    tommarow = moment.tz(tommarow,"Asia/Jerusalem").toDate()
+                    twoDays = moment.tz(twoDays,"Asia/Jerusalem").toDate()
+                   
                     
               birthdays= birthdays.filter(birthday=>{
 
@@ -133,15 +121,11 @@ export default {
                    
 
                     var isToday = birthday.birthday.getMonth() === today.getMonth() && birthday.birthday.getDate() === today.getDate()
-                    var isSunday = birthday.birthday.getMonth() === lastSunday.getMonth() && birthday.birthday.getDate() === lastSunday.getDate()
-                    var isMonday =birthday.birthday.getMonth() === lastMonday.getMonth() && birthday.birthday.getDate() === lastMonday.getDate()
-                    var isTuesday = birthday.birthday.getMonth() === lastTuesday.getMonth() && birthday.birthday.getDate() === lastTuesday.getDate()
-                    var isWednesday = birthday.birthday.getMonth() === lastWednesday.getMonth() && birthday.birthday.getDate() === lastWednesday.getDate()
-                    var isThursday = birthday.birthday.getMonth() === lastThursday.getMonth() && birthday.birthday.getDate() === lastThursday.getDate()
-                    var isFriday = birthday.birthday.getMonth() === lastFriday.getMonth() && birthday.birthday.getDate() === lastFriday.getDate()
-                    var isSaturday = birthday.birthday.getMonth() === lastSaturday.getMonth() && birthday.birthday.getDate() === lastSaturday.getDate()
+                    var isTommarow = birthday.birthday.getMonth() === tommarow.getMonth() && birthday.birthday.getDate() === tommarow.getDate()
+                    var istwoDays =birthday.birthday.getMonth() === twoDays.getMonth() && birthday.birthday.getDate() === twoDays.getDate()
+                  
 
-                    return isSunday || isMonday || isTuesday || isWednesday || isThursday || isFriday || isSaturday||isToday
+                    return isToday || isTommarow || istwoDays
                 })
                 birthdays.sort(function(a,b){
                     return a.birthday-b.birthday
@@ -170,7 +154,7 @@ export default {
 }  ,
      async makeApiCalls(){
         const calendarResponse = await axios.get(this.CalendarUrl)
-        this.jobs = [...calendarResponse.value]
+        this.jobs = [...calendarResponse.data.value]
           
           if(this.isShigra){
               const birthdayData = await axios.get(this.notShigraBirthdays)    
@@ -198,10 +182,11 @@ export default {
 
 
           }
-        this.isShigra = !this.isShigra;
+            this.isShigra = !this.isShigra;
     },    
   },
     beforeMount(){
+  
       this.clearInt = setInterval(()=>{
         this.makeApiCalls()
       
