@@ -5,7 +5,7 @@
       <div class="swiper">
         <span>מגדלור צמרת/  </span>
                 <div class="stop-and-swap">
-                  <button class="bi bi-repeat rep-btn"> </button>
+                  <button class="bi bi-repeat rep-btn" @click="$emit('toggle-transition')"> </button>
                           <button class="bi bi-play-fill rep-btn"> </button>
 
                 </div>

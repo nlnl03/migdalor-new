@@ -3,15 +3,15 @@
     <div class="night-and-day-and-shigra"> 
        <div class="semel-and-shigra-container"> 
       <div class="shigra-container">
-       <span class="shigra-title">  כוננות </span>
+               <img  src="@/assets/383zameret.png" class="gdud-pic"> 
+
                 <!-- <h3 class="shigra-title"> כוננות</h3> -->
                 <!-- <span class="shigra-circle"> כוננות</span> -->
         </div>
          <div class="logo-container">
-          <span>
-            {{shigra}}
-            </span>
-              <i class="bi bi-arrow-clockwise"> </i>
+                <img  src="@/assets/hoshen.png" class="gdud-pic"> 
+
+              <!-- <i class="bi bi-arrow-clockwise"> </i> -->
 
         </div>
       </div>
@@ -246,9 +246,11 @@ export default {
   left: 50%;
   transform: translate(-50%,-50%);
 }
-.shigra-title{
+.gdud-pic{
   position: absolute;
-  top: 50%;
+  top: 55%;
+  height: 80%;
+  width: 70%;
   left: 50%;
   transform: translate(-50%,-50%);
   font-family: var(--font-title);

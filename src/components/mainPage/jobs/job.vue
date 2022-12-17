@@ -1,21 +1,27 @@
 <template>
   <div class="job-item" :style="grad" >
-    <div class="flex-inner-driver"  >
-          <span class="job-title"> 
+    <div class="flex-inner-driver data">
+         
+     <span class="job-title"> 
            {{job}}
           </span>
-          <div v-if="job"> 
-          <span class="name">
+          <span class="name" v-if="name.trim()">
           {{name}}
             </span>
-            <span class="phone">
+                  <span class="name" v-if="!name.trim()">
+          טרם הוזן שם
+            </span>
+            <span class="phone" v-if="phone.trim()">
            {{phone}}
             </span>
-            </div>
-             <span class="does-not-exist">
-              טרם הוזן
+             <span class="phone" v-if="!phone.trim()">
+           טרם הוזן טלפון
             </span>
-        </div>
+            
+           </div>
+     
+         
+            
     </div>
 
 </template>
@@ -23,6 +29,7 @@
 <script>
 export default {
     mounted(){
+      console.log(this.name,this.job,this.phone)
     },
     data(){
         return{
@@ -38,7 +45,7 @@ export default {
 <style scoped>
 .does-not-exist{
   font-size: 20px;
-    font-family: var(--font-title);
+    /* font-family: var(--font-title); */
 }
 .job-item{
     width: 28%;
@@ -54,9 +61,16 @@ export default {
 .flex-inner-driver{
     /* transform: translateY(-20px); */
   display: flex;
-    justify-content: space-evenly;
   flex-direction: column;
   height: 100%;
+}
+.data{
+      justify-content: space-evenly;
+
+}
+.terem-huzan{
+      justify-content: flex-start;
+
 }
 .name{
 

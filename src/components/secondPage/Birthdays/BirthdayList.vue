@@ -5,7 +5,7 @@
         <div v-for="pluga in plugot" :key="pluga.name" class="flex-item-pluga" :style="{'--shape-color':pluga.color,'--pluga-name':pluga.name}"> 
           <h3 class="pluga-title"> {{pluga.name}}</h3>
           <div class="birthdays-pluga-flex">
-                <Birthday v-for="birthday in pluga.birthdays" :date="birthday.date" :name="birthday.name" :mahlaka="birthday.mahlaka" :plugaColor="pluga.color" :key ="birthday.name"  />
+                <Birthday v-for="birthday in pluga.birthdays" :date="birthday.birthday" :name="birthday.Title" :mahlaka="birthday.mahlaka" :plugaColor="pluga.color" :key ="birthday.Title"  />
             </div>
             </div>
         </div>
@@ -16,34 +16,48 @@
 import Birthday from './Birthday.vue'
 export default {
   components: { Birthday },
+  props:["birthdays"],
     data(){
       return{
         plugot:[
           {
-            name:'ת. מטכ"ל', color:"rgb(19,126,233)",
-                birthdays:[{mahlaka:"",name:"",date:"5.12"}]
+            name:"ת. מטכ\"ל", color:"rgb(19,126,233)",
+                birthdays:[]
         },{
             name:'מפקדה',color:"#063c5c",
-                  birthdays:[{mahlaka:"",name:"",date:"5.12"}]
+                  birthdays:[]
 
         },
         {
           name:'טכנ"ל',color:"#dc291e",
-             birthdays:[{mahlaka:"",name:"",date:"5.12"}]
+             birthdays:[]
 
         },{
           name:'שו"ב',color:"#624e6a",            
-          birthdays:[{mahlaka:"",name:"",date:"5.12"}]
+          birthdays:[]
 
         },
         {
           
           name:'הפת"ק',color:"teal",
-                      birthdays:[{mahlaka:"חוזי",name:"  ממשפחת דבח דוד דבח",date:"6.12"},{mahlaka:"חוזי",name:"  דוד דבח",date:"5.12"},{mahlaka:"",name:"",date:"7.12"}]
+                      birthdays:[]
 
         }
         ]
       }
+    },
+    beforeMount(){
+      
+      this.birthdays.forEach((birthday)=>{
+        this.plugot.forEach((pluga)=>{
+          console.log("Gw")
+          console.log(pluga,birthday)
+          if(birthday.pluga == pluga.name){
+            console.log("h")
+            pluga.birthdays.push(birthday)
+          }
+        })
+      })
     },
 }
 </script>

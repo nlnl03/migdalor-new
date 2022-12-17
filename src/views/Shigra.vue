@@ -1,13 +1,13 @@
 <template>
 <div class="wrap">
-  <TopBar/>
+  <TopBar @swap-page="handleSwapPage" @toggle-transition="handleTransition" />
   <Time :shigra="shigra" />
-  <Jobs v-if="true" :jobs="jobs" />
-  <BirthdayList v-if="false" :birthdayList="birthdayList" />
-  <NoticeBoard v-if="false" :notices="notices" />
-    <Havai v-if="true" />
+  <Jobs v-if="isShigra"  :jobs="jobs" />
+  <BirthdayList v-if="!isShigra" :birthdays="birthdayList" />
+  <NoticeBoard v-if="isShigra" :notices="notices" />
+    <Havai v-if="!isShigra" />
 
-  <Calendar/>
+  <Calendar v-if="events && subjects" :events="events" :subjects="subjects" />
 </div>
 
 </template>
@@ -27,66 +27,22 @@ export default {
   name: 'Shigra',
   data(){
     return{
-      shigraNotice:"",
-      shigraJobs:"",
-      notShigraBirthdays:"",
-      CalendarUrl:"",
+      shigraNotice:this.$devUrl+'/notices',
+      shigraJobs:this.$devUrl+'/jobs',
+      notShigraBirthdays:this.$devUrl+'/birthdayList',
+      calendarUrl:this.$devUrl+'/events',
+      subjectsUrl:this.$devUrl+'/subjects',
       shigra:"שגרה",
+      isTransition: true,
       clearInt:"",
       isShigra:true,
-      birthdayList:[{
-        name:"",
-        pluga:"",
-        mahlaka:"",
-      }],
-       notices:[
-          {Title:"כרגע בלי רסר חובתינו להתנהג בהתאם",isCritical:false},
-          {Title: "נכנסים לתקופה של שחרורים והחלפות (גם בחטיבה) להיערכות כולם",isCritical:false},
-          {Title:"הערכה רבה לכל המשתתפים בכנסי החשיפה",isCritical:false},
-          {Title:"מזל  טובטובטו טוב    בטובטוב למיטל על הלידה",isCritical:false},
-          {Title:"ביקור במסדרת יחידה מצטיינת של הרמטכל",isCritical:true},
-          {Title:"22.9 אריזות מזון",isCritical:false},
-          
-         
-          
-          
-        ],
-
-       jobs:[
-          {job:"נהג תורן",
-            name:"",
-            phone:"",
-          },
-          {
-            job:'מג"ד תורן',
-            name:"",
-            phone:"",
-            
-          },{
-              job:'קצין תורן',
-            name:"",
-            phone:"",
-
-          },
-          {
-              job:'מפקד תורן ת. מטכ"ל',
-            name:"",
-            phone:"",
-
-          },
-            {
-              job:'מפקד תורן הפת"ק',
-            name:"",
-            phone:"",
-
-          },
-           {
-              job:'מפקד תורן שו"ב',
-            name:"",
-            phone:"",
-
-          }
-        ]
+      birthdayList:"",
+        events:"",
+          subjects:"",
+       notices:"",
+        jobsTitles:["נהג תורן","מג\"ד תורן","קצין תורן","מפקד תורן ת. מטכ\"ל","מפקד תורן הפת\"ק","מפקד תורן שו\"ב"],
+       jobs:""
+        
     }
   },
   methods:{
@@ -103,7 +59,6 @@ export default {
                      
                      let tommarow = new Date()
                      tommarow.setDate(tommarow.getDate() + 1)
-                     console.log(tommarow)
                     let twoDays  = new Date();
                     twoDays.setDate(today.getDate() + 2)
                  
@@ -136,61 +91,105 @@ export default {
                     
 
                 })  
+                return [...birthdays]
  
             
            
          },
-      dateCheck(from,to,check) {
+      dateCheck(from,to,current) {
 
-      var fDate,lDate,cDate;
-      fDate = Date.parse(from);
-      lDate = Date.parse(to);
-      cDate = Date.parse(check);
-
-      if((cDate <= lDate && cDate >= fDate)) {
+      
+      from = new Date(from);
+      to = new Date(to);
+      current = new Date(current);
+      console.log(from,current,to)
+      if(current.getDate() == to.getDate() && current >= from.getDate()) {
           return true;
       }
       return false;
 }  ,
      async makeApiCalls(){
-        const calendarResponse = await axios.get(this.CalendarUrl)
-        this.jobs = [...calendarResponse.data.value]
-          
+        const calendarResponse = await axios.get(this.calendarUrl)
+        this.events = [...calendarResponse.data.value]
+          const subjectReponse = await axios.get(this.subjectsUrl)
+          this.subjects = [...subjectReponse.data.value] 
           if(this.isShigra){
               const birthdayData = await axios.get(this.notShigraBirthdays)    
-              this.birthdayList = [...birthdayData.data.value];
+              this.birthdayList = this.getBirthdays([...birthdayData.data.value]);
+              console.log(this.birthdayList)
 
           }else{
-              const jobsData = await axios.get(this.ShigraJobs)    
-              const jobsResults = [...jobsData.data.value];
-              jobsResults = jobsResults.filter((job)=>{
-                  return this.dateCheck(job.start,job.end)
+              const jobsData = await axios.get(this.shigraJobs)    
+              this.jobs = [...jobsData.data.value];
+              console.log(this.jobs)
+              let today = new Date();
+              today = moment.tz(today,"Asia/Jerusalem").toDate();
+              this.jobs = this.jobs.filter((job)=>{
+                job.start =  moment.tz( job.start,"Asia/Jerusalem").toDate();
+                job.end =   moment.tz(job.end,"Asia/Jerusalem").toDate();
+              var st =  this.dateCheck(job.start,job.end,today)
+              console.log(st)
+                  return st
               })
-              this.jobs.forEach((job)=>{
-                job.name = ""
-                job.phone = ""
-                  jobsResults.forEach((innerJob)=>{
-                    if(job.job == innerJob.Title){
-                        job.name = innerJob.name;
-                        job.phone = innerJob.phone;
-                    }
+                            console.log(this.jobs)
 
-                  })
+              this.jobs.forEach((job)=>{
+  
+                 if(!this.jobsTitles.includes(job.job)){
+                  job.name = ""
+                  job.phone = ""
+                 }
               })
+              let notThereTitles = [...this.jobsTitles]
+              this.jobs.forEach((job)=>{
+                if(notThereTitles.includes(job.job)){
+                  console.log("in here")
+                  notThereTitles = notThereTitles.filter(val=> val!== job.job)
+                }
+              })
+              console.log(notThereTitles)
+              notThereTitles.forEach((jobTitle)=>{
+                this.jobs.push({job:jobTitle,name:"",phone:""})
+              })
+
+
                 const noticeBoardData = await axios.get(this.shigraNotice)
-                this.notices = this.getBirthdays([...noticeBoardData.data.value])
+                this.notices = [...noticeBoardData.data.value]
 
 
           }
             this.isShigra = !this.isShigra;
-    },    
-  },
-    beforeMount(){
-  
+    },
+    startPageTransition(){
+      
+      this.isTransition = true;
       this.clearInt = setInterval(()=>{
         this.makeApiCalls()
       
-    },10000)
+    },15000)
+    } ,
+    stopPageTransition(){
+      this.isTransition = false;
+          clearInterval(this.clearInt);
+
+    } ,  
+    handleSwapPage(){
+      this.stopPageTransition();
+      this.makeApiCalls()
+
+    },
+    handleTransition(){
+        if(this.isTransition){
+          this.stopPageTransition()
+        }else{
+          this.startPageTransition()
+        }
+    },
+  },
+    beforeMount(){
+          this.makeApiCalls()
+
+       this.startPageTransition()
     },
   components:{
     BirthdayList,

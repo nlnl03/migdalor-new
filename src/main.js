@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import { Quasar } from 'quasar'
 // import quasarUserOptions from './quasar-user-options'
+const app = createApp(App)
+app.config.globalProperties.$devUrl = "http://localhost:3000"
 
-
-
-createApp(App).use(Quasar).mount('#app')
+ app.use(Quasar).mount('#app')

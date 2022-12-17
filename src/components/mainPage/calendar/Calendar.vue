@@ -22,33 +22,13 @@ import moment from 'moment';
 // import axios from "axios";
 export default {
     name:"Calendar",
+    props:["events","subjects"],
     data(){
         return{
-            subjects:[{
-                subject:"פלוגתי",color:"#063c5c"
-            },{
-                    subject:"מחלקתי",color:"#dc291e"
-
-            },{
-                    subject:"גדודי",color:"rgb(19,126,233)"
-
-        }
-            ],
-            activities:[],
-            events:{value:[
-         
-         {"Title":"הדממה" ,"end":"2022-11-15T22:28:04Z","start":"2022-11-14T21:28:04Z","subject":"מחלקתי", "isGant":true}
-         ,
-         {"Title":"ערב מחלקה" ,"end":"2022-11-16T22:28:04Z","start":"2022-11-13T22:28:04Z","subject":"גדודי", "isGant":true}
-         ,
-        {"Title":"טיול פלוגתי" ,"end":"2022-11-17T22:28:04Z","start":"2022-11-13T22:28:04Z","subject":"גדודי", "isGant":true},
         
-         {"Title":"הרצאה בוחרים בחיים" ,"end":"2022-11-18T22:28:04Z","start":"2022-11-13T22:28:04Z","subject":"פלוגתי", "isGant":true}
-         ,
-         {"Title":"ערב ראשון" ,"end":"2022-11-14T22:28:04Z","start":"2022-11-13T22:28:04Z","subject":"מחלקתי", "isGant":true}
-         
-
-        ]},
+            
+            activities:[],
+          
                  currentWeekOptions: {
                 
                  timeZone: "Asia/Jerusalem",
@@ -76,10 +56,8 @@ export default {
     },
     methods:{
          doAll(){           
-                this.activities=this.events.value
-                    console.log(this.activities)
+                this.activities=this.events
                 this.activities = this.activities.filter(activity=>activity.isGant);
-                console.log(this.activities)
                 this.processResponse(this.activities)
                 this.fillEvents()
     
@@ -121,11 +99,11 @@ export default {
                 arr.push(object)
             })
               this.currentWeekOptions["events"] = arr;
-            // this.currentWeekOptions.events.forEach(event=>{
-            //     if( event.start.getDay() == event.end.getDay()){
-            //         event['allDay']= true; 
-            //      }
-            // })
+            this.currentWeekOptions.events.forEach(event=>{
+                if( event.start.getFullYear() == event.end.getFullYear() && event.start.getMonth() == event.end.getMonth()  &&  event.start.getDate()  == event.end.getDate()){
+                    event['allDay']= true; 
+                 }
+            })
         
             
         },

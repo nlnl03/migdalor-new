@@ -6,7 +6,11 @@
       <div class="jobs">
 
         <div class="flex-jobs"> 
-            <Job v-for="job in jobs" :name="job.name"  :job="job.job" :phone="job.phone"  :key="job.job" />
+            <Job v-for="job in jobs" 
+            :name="job.name"
+            :job="job.job"
+              :phone="job.phone" 
+               :key="job.job" />
           </div>
 
       </div>
@@ -44,6 +48,9 @@ export default {
        
 
       }
+  },
+  beforeMount(){
+    console.log(this.jobs)
   },
   components:{
     Job
@@ -186,6 +193,7 @@ export default {
       border-radius: 20px 0px 0px 20px;
         /* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
     width: 70%; 
+    overflow: hidden;
     height:100%;
 }
 .driver{
