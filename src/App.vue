@@ -100,6 +100,9 @@ body,html{
     padding: 0 5% !important;
 
   }
+  .fc .fc-col-header-cell-cushion{
+    font-size: 16px;
+  }
 }
 
 </style>

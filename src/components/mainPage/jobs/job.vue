@@ -27,17 +27,31 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     mounted(){
       console.log(this.name,this.job,this.phone)
     },
     data(){
         return{
-          
+          jobsData:[]
         }
     },
     props:["name","job","phone"],
-    name:"job"
+    name:"job",
+
+    methods:{
+        getJobs(){
+          const res = axios.get(this.$devUrl + "/jobs")
+          this.jobsData = res.data
+          console.log(this.jobsData)
+        },
+    },
+
+    beforeMount(){
+      this.getJobs()
+    }
+
 
 }
 </script>

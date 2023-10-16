@@ -1,7 +1,7 @@
 <template>
   <div class="subgrid-container"> 
 
-               <img  src="@/assets/383zameret.png"> 
+      <img  src="@/assets/383zameret.png"> 
 
       <div class="jobs">
 

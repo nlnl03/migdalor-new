@@ -7,8 +7,8 @@
 
   <BirthdayList v-if="!isShigra" :birthdays="birthdayList" />
   <NoticeBoard v-if="isShigra" :notices="notices" />
-    <Havai v-if="!isShigra" />
-
+    <!-- <Havai v-if="!isShigra" /> -->
+  <Meals v-if="!isShigra" />
   <Calendar v-if="events && subjects" :events="events" :subjects="subjects" />
 </div>
 
@@ -23,6 +23,7 @@ import Time from "@/components/mainPage/time/Time.vue"
 import TopBar from "@/components/mainPage/topBar/TopBar.vue"
 import Jobs from "@/components/mainPage/jobs/Jobs.vue"
 import Havai from "@/components/secondPage/havai/Havai.vue"
+import Meals from "@/components/secondPage/meals/meals.vue"
 import axios from "axios"
 import moment from "moment"
 export default {
@@ -207,7 +208,8 @@ export default {
     Jobs,
     NoticeBoard,
     Calendar,
-    Havai
+    Havai,
+    Meals
   }
 }
 </script>
