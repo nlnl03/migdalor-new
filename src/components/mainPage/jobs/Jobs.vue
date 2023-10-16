@@ -70,12 +70,7 @@ export default {
   color:white;
   font-size: 22px;
 }
-.herum{
-  width: 40%;
-  height: 100%;
-
-}
-.herum-header{
+ .herum-header{
     color: white;
 
     font-family: var(--font-title);
@@ -114,6 +109,8 @@ export default {
   height: 100%;
   align-items: center;
   width:40%;
+  padding: 1em;
+
 }
 .subgrid-container img{
   left: 3%;
@@ -141,7 +138,7 @@ export default {
   flex-wrap: wrap;
   height: 42%;
   margin:0 auto;
-  width: 98%;
+  /* width: 98%; */
 }
 .phone{
   /* display: inline; */
@@ -167,9 +164,9 @@ export default {
     /* direction: rtl !important;   */
       border-radius: 20px;
       display: flex;
-      width: 90%;
+      width: 80%;
       position: relative;
-      left:100px;
+      /* left:100px; */
       justify-content: space-between;
         /* background-color:var(--bg-color); */
 
@@ -195,6 +192,8 @@ export default {
     width: 70%; 
     overflow: hidden;
     height:100%;
+    padding: 1em;
+
 }
 .driver{
   position: relative;

@@ -1,8 +1,10 @@
 <template>
 <div class="wrap">
   <TopBar @swap-page="handleSwapPage" @toggle-transition="handleTransition" />
-  <Time :shigra="shigra" />
-  <Jobs v-if="isShigra"  :jobs="jobs" />
+      <Time :shigra="shigra" />
+      <Jobs v-if="isShigra"  :jobs="jobs" />
+    
+
   <BirthdayList v-if="!isShigra" :birthdays="birthdayList" />
   <NoticeBoard v-if="isShigra" :notices="notices" />
     <Havai v-if="!isShigra" />
@@ -178,11 +180,18 @@ export default {
       this.makeApiCalls()
 
     },
-    handleTransition(){
-        if(this.isTransition){
+    handleTransition(data){
+      console.log(data)
+         if(this.isTransition){
+          console.log("yes1")
           this.stopPageTransition()
+          data.classList.remove('bi', 'bi-pause-fill');
+          data.classList.add('bi', 'bi-play-fill')
         }else{
+          console.log("yes2")
           this.startPageTransition()
+          data.classList.remove('bi', 'bi-play-fill');
+          data.classList.add('bi', 'bi-pause-fill')
         }
     },
   },
@@ -219,6 +228,7 @@ export default {
     ". calendar calendar noticeBoard ."; 
     height: 100vh;
     width: 100vw;
+    padding: 0 12%;
 }
 
 .header { grid-area: header; }
@@ -229,4 +239,9 @@ export default {
 .jobs { grid-area: jobs; }
 .hamal { grid-area: hamal; }
 
+.main-flex{
+    position: absolute;
+    margin-top: 100px;
+    width: 100%;
+ }
 </style>

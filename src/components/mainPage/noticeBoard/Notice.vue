@@ -16,7 +16,9 @@ export default {
 
 <style scoped>
 .notice{
-    padding-right: 10px;
+    padding: 0 10px;
+    display: block;
+    font-weight: 700;
 }
 .hid{ 
         color:var(--bg-color);

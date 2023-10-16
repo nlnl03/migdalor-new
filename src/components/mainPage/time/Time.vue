@@ -249,7 +249,7 @@ export default {
 .gdud-pic{
   position: absolute;
   top: 55%;
-  height: 80%;
+  height: 70%;
   width: 70%;
   left: 50%;
   transform: translate(-50%,-50%);
@@ -394,10 +394,13 @@ export default {
     border-bottom: 1px solid grey;
 }
 .night-and-day-and-shigra{
-       grid-area: Time; 
-       justify-content: space-between;
-      display: flex;
-      flex-direction: row;
+    grid-area: Time; 
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    min-height: 320px;
+    min-width: 400px;
+
 }
 
 </style>

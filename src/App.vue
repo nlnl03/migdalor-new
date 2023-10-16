@@ -84,6 +84,22 @@ body,html{
 
 }
 
+@media (max-width: 1630px) {
+  .subgrid-container{
+    font-size: 13px !important;
+    width: 90% !important;
+  }
+  .flex-birthdays{
+    width: 100% !important;
+  }
+  
+  
+}
+@media(max-width:1280px) {
+  .wrap{
+    padding: 0 5% !important;
 
+  }
+}
 
 </style>

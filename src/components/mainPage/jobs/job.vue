@@ -50,11 +50,9 @@ export default {
 .job-item{
     width: 28%;
     height: 100%;    
-    margin-top: 10px;
+     margin: 0.3em;
 
-    /* margin-bottom: 30px; */
-    /* height: 40%; */
-    border-radius: 20px;
+     border-radius: 20px;
     background: none !important;
     /* border: 1px solid white;      */
 }

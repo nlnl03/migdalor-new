@@ -1,33 +1,35 @@
 <template>
   <div class="header">
     <div class="Title-container">
-      
       <div class="swiper">
         <span>מגדלור צמרת/  </span>
-                <div class="stop-and-swap">
-                  <button class="bi bi-repeat rep-btn" @click="$emit('toggle-transition')"> </button>
-                          <button class="bi bi-play-fill rep-btn"> </button>
+            <div class="stop-and-swap">
+                <button class="bi bi-repeat rep-btn" @click="$emit('swap-page')"> </button>
+                <button class="bi bi-pause-fill rep-btn" @click="$emit('toggle-transition', this.$refs.stopStartBtn)" ref="stopStartBtn" >
+                </button>
 
-                </div>
-        </div>
+            </div>
+      </div>
     </div>
-      <div >
-          
-          
-        </div>
-        <div class="smalim">
-                    <!-- <img  src="@/assets/tikshuv.png"> 
-                                        <img  src="@/assets/Hoshen_center.png">  -->
-
-
-          </div>
+      
   </div>
 
 </template>
 
 <script>
 export default {
-    name:"TopBar"
+    name:"TopBar",
+    data(){
+      return{
+
+      }
+    },
+    methods:{
+      emitEvent() {
+        this.$emit('toggle-transition');
+      }
+
+    }
 }
 </script>
 
@@ -72,7 +74,7 @@ export default {
   justify-content: space-between;
 }
 .Title-container{
-    width:60%;
+    width:95%;
     height: 100%;
 
     padding-right: 10px;
