@@ -1,7 +1,8 @@
 <template>
+  <div class="notices-flex">
    <div class="noticeBoard" > 
      <h3 class="noticeBoard-title"> לוח מודעות</h3>
-     <p>הודעות מיקוד מסומנות <span style="color:red">באדום </span> </p>
+     <p>הודעות מיקוד מסומנות <span style="color:red; font-weight: 700;">באדום </span> </p>
 
      <div class="messages-container">
         <div class="messages">
@@ -13,6 +14,7 @@
         </div>
      </div>
    </div>
+  </div>
 </template>
 
 <script>
@@ -45,35 +47,52 @@ export default {
 </script>
 
 <style scoped>
+.notices-flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
  .messages-container {
-    height: 400px;  
+    height: 480px;  
      border-radius: 15px;
-    background: rgb(190 190 190 / 43%);
+    /* background: rgb(190 190 190 / 43%); */
+    /* background-color: rgb(190 190 190 / 94%); */
+        /* background-color: #d9d9d998;
+    box-shadow: 0px 0px 7px rgb(0 0 0); */
+
     overflow-y: hidden;
     position: relative;
     width: 100%;
-    border: 1px solid #9292924a;
+        background-color: #ebebeba1;
+    box-shadow: 0px 0px 8px rgb(51 51 51);
+
+    /* border: 3px solid #848588; */
    }
 .messages {
   overflow-y: hidden;
   position: absolute;
   top: 0;
-  padding: 3em;
-  animation: scrollMessages 10s linear infinite;
+  padding: 5em;
+  animation: scrollMessages 12s linear infinite;
 }
 @keyframes scrollMessages {
   0% {
-    top: 0;
+    transform: translateY(50%);
   }
   100% {
-    top: -100%;
+    transform: translateY(-100%);
   }
 }
-
+.noticeBoard{
+  width: 70%;
+}
 .noticeBoard-title{
  font-family: var(--font-title);
   font-size: 40px;
-
+ }
+.noticeBoard-title, p{
+  color: white;
 }
 .flex-notices{
   

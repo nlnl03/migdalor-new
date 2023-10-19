@@ -1,7 +1,4 @@
 <template>
-  <div class="main-nav">
-      <TimeDate />
-
       <div class="header">
           <img class="zameret-img" src="@/assets/383zameret.png">
           
@@ -13,16 +10,15 @@
         <img  src="@/assets/hoshen.png" class="hoshen-img" >
           
       </div>
-   </div>
-</template>
+ </template>
 
 <script>
-import TimeDate from './TimeDate.vue'
+// import TimeDate from './TimeDate.vue'
 
 export default {
  name:'toNav',
  components:{
-  TimeDate
+  // TimeDate
  }
 }
 </script>
@@ -31,22 +27,23 @@ export default {
 .main-nav{
   display: flex;
   flex-direction: row-reverse;
-  background-color: white;
+  /* background-color: white; */
+  background-color: #ffffffcc;
    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.4);
 
 }
 .header {
   direction: rtl;
-  grid-area: header; 
   color:black;
   position: relative;
   display: flex;
+  height: 110px !important;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
-  padding: 20px 0;
-  background-color: white;
+  padding: 8px 0;
+  background-color: #ffffffcc;
+  /* background-color: white; */
 }
 
 .zameret-img, .hoshen-img{

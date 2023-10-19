@@ -1,7 +1,7 @@
 <template>
   <topNav />
    <div class="grid-box">
-    <div class="il-flag"> <ilFlag /> </div>
+    <div class="il-flag"> <TimeDate /></div>
     <div class="hirum-box"> <hirumNum /> </div>
     <div class="messages-box"> <messagesComp /> </div>
     <div class="activity-times"> <activityTimes /> </div>
@@ -10,20 +10,21 @@
 
 <script>
 import topNav from './components/topNav.vue';
-import ilFlag from './components/flag.vue'
+// import ilFlag from './components/flag.vue'
 import hirumNum from './components/hirumNum.vue'
 import messagesComp from './components/messages.vue'
 import activityTimes from './components/activityTimes.vue'
+import TimeDate from './components/TimeDate.vue'
 
 export default {
   name: 'App',
   components: {
     topNav,
-    ilFlag,
+    // ilFlag,
     hirumNum,
     messagesComp,
     activityTimes,
-    
+    TimeDate
   }
 }
 </script>
@@ -37,7 +38,28 @@ export default {
   /* margin-top: 20px; */
 }
 body{
-  background-color: rgba(226, 225, 225, 0.61) !important;
+  /* background-color: rgba(226, 225, 225, 0.61) !important; */
+  background-image: url("@/assets/background2.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+    width: 100%;
+  height: 100%;
+  z-index: -1; 
+   position: fixed;
+
+}
+body::after{
+  content: "";
+  display: block;
+  background-color: rgba(69, 74, 92, 0.3);  
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; 
 }
 
 @font-face {
@@ -64,40 +86,46 @@ body{
 }
 
 .grid-box {
-  margin-top: 40px;
+  margin-top: 30px;
   margin-left: 5%;
-  margin-right: 7%;
+  margin-right: 5%;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows:  250px 505px;
+  grid-template-columns: 1fr 2.8fr 1fr ;
+  grid-template-rows:  150px 505px;
   grid-column-gap: 10px;
-  grid-row-gap:52px;
+  grid-row-gap: 0;
 
 }
 
 .il-flag {
-   grid-area: 1 / 5 / 2 / 6; 
-   width: 350px; 
+   grid-area: 1 / 3 / 2 / 4; 
+   /* width: 350px; */
+   justify-content: center;
+   align-items: center;
+   display: flex; 
 }
 .hirum-box {
-   grid-area: 2 / 5 / 3 / 6; 
-   background-color: #d3d3d37a ;
+   grid-area: 2 / 3 / 3 / 4; 
+   /* background-color: #d3d3d37a ; */
+   /* background-color: #d9d9d9bf; */
    color: black;
   border-radius: 15px;
-  height: 480px;
+  /* height: 480px; */
  
 }
 .messages-box {
-   grid-area: 1 / 3 / 2 / 4; 
+   grid-area: 1 / 2 / 2 / 3; 
    max-height: 500px;
-   width: 750px;
-   height: 650px;
+    height: 650px;
    direction: rtl;
- }
+   
+    }
 .activity-times {
    grid-area: 1 / 1 / 2 / 2; 
-   width: 400px;
+   /* width: 400px; */
    height: 790px;
+       color: white;
+
 }
 .div5 { 
   grid-area: 3 / 3 / 4 / 4; 
@@ -107,15 +135,44 @@ body{
 
 @media (max-width:1280px) {
   .grid-box{
-      margin-left: 7%;
-    margin-right: 5%;
-      grid-column-gap: 10px;
-
+    margin-left: 4%;
+    margin-right: 3%;
+    grid-column-gap: 20px;
+    grid-row-gap: 25px;
+    grid-template-columns: 0.8fr 2.2fr .9fr;
+          grid-template-rows:  100px 100%;
 
   }
-  .div1 {
-    width: 300px; 
+   .hirum-flex:first-child{
+    margin-bottom: 0 !important;
   }
-}
+  .hirum-flex h3{
+    font-size: 30px;
+  }
+  body{
+    background-position: 70%;
+  }
+  .messages-container{
+    height: 380px !important;
+  }
+  .hirum{
+    margin: 12px 0 !important;
+
+  }
+  .noticeBoard[data-v-5b2f7148] {
+    width: 88%;
+  } 
+  .hirum-box{
+    display: flex;
+    justify-content: flex-end;
+  }
+  .activity-times h3{
+    font-size: 34px;
+  }
+  .activity-flex{
+    width: 100% !important;
+
+  }
+ }
  
  </style>

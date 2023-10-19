@@ -1,8 +1,11 @@
 <template>
     <div class="time-date"> 
-        <span class=" week-day">יום {{day}}  </span>
-        <span class="date"> {{loaziDate}} </span>
-        <span ref="span" :seconds = "seconds" class="day big-clock">{{time}}</span>
+        <span ref="span" :seconds = "seconds" class="day big-clock">{{time}}</span> 
+        <div class="date-day">
+            <div>,יום {{day}}</div>
+            <div style="margin-right: 10px;">{{loaziDate}}</div>
+        </div>
+        <!-- <span class=" week-day">  </span><span class="date">  </span> -->
     </div>
     
  </template>
@@ -168,6 +171,13 @@ export default {
 		0 0 40px 100px #FFDE0010;
 	}
 }
+.date-day{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row-reverse;
+  font-size: 17px;
+ }
 .logo-container{
   width: 80%;
   height: 50%;
@@ -243,19 +253,7 @@ export default {
 .day{
   color: black;
 }
-.time-date{
-  position: relative;
-  top:15px;
-      justify-content: center;
-      display: flex;
-      align-items: center;
-      /* align-items: flex-start; */
-      flex-direction: column;
-    width: 100%;
-      height: 100%;
-      color: black;
-}
-.clock span{
+ .clock span{
   width: 60%;
   text-align: center;
 }
@@ -281,16 +279,15 @@ export default {
     display:inline-block;
     /* margin-left:0.5vw; */
      color: black;
-
-    /* font-family: var(--font-clock); */
-    font-size:20px;
+   font-weight: 700;
+    font-family: var(--font-title);
+    font-size: 55px;
 }
 .big-clock::after { 
     content: attr(seconds);
-  color: black;
+    color: black;
     top:35%;
     box-sizing: border-box;
-   
     /* font-family: var(--font-clock); */
     /* font-size:35px; */
 }
@@ -344,9 +341,12 @@ export default {
 }
 .time-date{
      position: relative;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
     /* left: 20%; */
-    width: 250px;
-    height: 100%;
+     color: white;
 }
 
 </style>
